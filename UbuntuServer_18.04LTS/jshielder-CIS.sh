@@ -158,12 +158,14 @@ echo -e "\e[93m[+]\e[00m We will now Set a Bootloader Password"
 echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
 echo ""
 
-grub-mkpasswd-pbkdf2 | tee grubpassword.tmp
-grubpassword=$(cat grubpassword.tmp | sed -e '1,2d' | cut -d ' ' -f7)
-echo " set superusers="root" " >> /etc/grub.d/40_custom
-echo " password_pbkdf2 root $grubpassword " >> /etc/grub.d/40_custom
-rm grubpassword.tmp
-update-grub
+#Commented out, as per instruction #5
+
+#grub-mkpasswd-pbkdf2 | tee grubpassword.tmp
+#grubpassword=$(cat grubpassword.tmp | sed -e '1,2d' | cut -d ' ' -f7)
+#echo " set superusers="root" " >> /etc/grub.d/40_custom
+#echo " password_pbkdf2 root $grubpassword " >> /etc/grub.d/40_custom
+#rm grubpassword.tmp
+#update-grub
 
 #1.4.3 Ensure authentication required for single user mode (Scored)
 
