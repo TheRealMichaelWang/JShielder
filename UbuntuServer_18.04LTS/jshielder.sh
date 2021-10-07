@@ -808,7 +808,7 @@ additional_hardening(){
     echo tty1 > /etc/securetty
     chmod 0600 /etc/securetty
     chmod 700 /root
-    chmod 600 /boot/grub/grub.cfg
+    #chmod 600 /boot/grub/grub.cfg Dont use grub
     #Remove AT and Restrict Cron
     apt purge at
     apt install -y libpam-cracklib
@@ -1089,43 +1089,6 @@ install_arpwatch(){
 
 ##############################################################################################################
 
-set_grubpassword(){
-  clear
-  f_banner
-  echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
-  echo -e "\e[93m[+]\e[00m GRUB Bootloader Password"
-  echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
-  echo ""
-  echo "It is recommended to set a password on GRUB bootloader to prevent altering boot configuration (e.g. boot in single user mode without password)"
-  echo ""
-  echo -n " Do you want to set a GRUB Bootloader Password? (y/n): " ; read grub_answer
-  if [ "$grub_answer" == "y" ]; then
-    grub-mkpasswd-pbkdf2 | tee grubpassword.tmp
-    grubpassword=$(cat grubpassword.tmp | sed -e '1,2d' | cut -d ' ' -f7)
-    echo " set superusers="root" " >> /etc/grub.d/40_custom
-    echo " password_pbkdf2 root $grubpassword " >> /etc/grub.d/40_custom
-    rm grubpassword.tmp
-    update-grub
-    echo "On every boot enter root user and the password you just set"
-    echo "OK"
-    say_done
-  else
-    echo "OK"
-    say_done
-  fi
-
-echo -e ""
-echo -e "Securing Boot Settings"
-spinner
-sleep 2
-chown root:root /boot/grub/grub.cfg
-chmod og-rwx /boot/grub/grub.cfg
-say_done
-
-}    
-
-##############################################################################################################
-
 file_permissions(){
  clear
   f_banner
@@ -1255,7 +1218,7 @@ echo "29. Install and Secure MySQL"
 echo "30. Set More Restrictive UMASK Value (027)"
 echo "31. Secure /tmp Directory"
 echo "32. Install PSAD IDS"
-echo "33. Set GRUB Bootloader Password"
+echo "33. Set GRUB Bootloader Password(DISABLED)"
 echo "34. Exit"
 echo " "
 
@@ -1403,7 +1366,7 @@ install_psad
 ;;
 
 33)
-set_grubpassword
+echo "Grub Commands Disabled"
 ;;
 
 34)
