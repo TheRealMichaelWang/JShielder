@@ -17,6 +17,7 @@
 
 #Credits to Center for Internet Security CIS
 
+#Modified for Cyber Patriots
 
 source helpers.sh
 
@@ -1204,240 +1205,14 @@ f_banner
 echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
 echo -e "\e[93m[+]\e[00m SELECT THE DESIRED OPTION"
 echo -e "\e[34m---------------------------------------------------------------------------------------------------------\e[00m"
-echo ""
-echo "1. LAMP Deployment"
-echo "2. LEMP Deployment"
-echo "3. Reverse Proxy Deployment With Apache"
-echo "4. General Purpose (without WebServer or DBServer)"
-echo "5. Running With SecureWPDeployer or JSDeployer Script"
-echo "6. Customized Run (Only run desired Options)"
-echo "7. CIS Benchmark Hardening"
-echo "8. Exit"
+echo "1. Run Specific Options"
+echo "2. Standard Benchmark Hardening"
 echo
 
 read choice
 
 case $choice in
-
 1)
-check_root
-install_dep
-config_host
-config_timezone
-update_system
-restrictive_umask
-unused_filesystems
-uncommon_netprotocols
-admin_user
-rsa_keygen
-rsa_keycopy
-secure_ssh
-set_iptables
-install_fail2ban
-install_secure_mysql
-install_apache
-install_secure_php
-install_modsecurity
-set_owasp_rules
-secure_optimize_apache
-install_modevasive
-install_qos_spamhaus
-config_fail2ban
-additional_packages
-tune_secure_kernel
-install_rootkit_hunter
-tune_nano_vim_bashrc
-daily_update_cronjob
-install_artillery
-additional_hardening
-install_unhide
-install_tiger
-install_psad
-disable_compilers
-secure_tmp
-apache_conf_restrictions
-unattended_upgrades
-enable_proc_acct
-install_auditd
-install_sysstat
-install_arpwatch
-set_grubpassword
-file_permissions
-reboot_server
-;;
-
-
-2)
-check_root
-install_dep
-config_host
-config_timezone
-update_system
-restrictive_umask
-unused_filesystems
-uncommon_netprotocols
-admin_user
-rsa_keygen
-rsa_keycopy
-secure_ssh
-set_iptables
-install_fail2ban
-install_secure_mysql
-install_nginx
-compile_modsec_nginx
-install_secure_php_nginx
-config_fail2ban
-additional_packages
-tune_secure_kernel
-install_rootkit_hunter
-tune_nano_vim_bashrc
-daily_update_cronjob
-install_artillery
-additional_hardening
-install_unhide
-install_tiger
-install_psad
-disable_compilers
-secure_tmp
-unattended_upgrades
-enable_proc_acct
-install_auditd
-install_sysstat
-install_arpwatch
-set_grubpassword
-file_permissions
-reboot_server
-;;
-
-3)
-check_root
-install_dep
-config_host
-config_timezone
-update_system
-restrictive_umask
-unused_filesystems
-uncommon_netprotocols
-admin_user
-rsa_keygen
-rsa_keycopy
-secure_ssh
-set_iptables
-install_fail2ban
-install_apache
-install_modsecurity
-set_owasp_rules
-secure_optimize_apache
-install_modevasive
-install_qos_spamhaus
-config_fail2ban
-additional_packages
-tune_secure_kernel
-install_rootkit_hunter
-tune_nano_vim_bashrc
-daily_update_cronjob
-install_artillery
-additional_hardening
-install_unhide
-install_tiger
-install_psad
-disable_compilers
-secure_tmp
-apache_conf_restrictions
-unattended_upgrades
-enable_proc_acct
-install_auditd
-install_sysstat
-install_arpwatch
-set_grubpassword
-file_permissions
-reboot_server
-;;
-
-4)
-check_root
-install_dep
-config_host
-config_timezone
-update_system
-restrictive_umask
-unused_filesystems
-uncommon_netprotocols
-admin_user
-rsa_keygen
-rsa_keycopy
-secure_ssh
-set_iptables
-install_fail2ban
-config_fail2ban
-additional_packages
-tune_secure_kernel
-install_rootkit_hunter
-tune_nano_vim_bashrc
-daily_update_cronjob
-install_artillery
-additional_hardening
-install_unhide
-install_tiger
-install_psad
-disable_compilers
-secure_tmp
-unattended_upgrades
-enable_proc_acct
-install_auditd
-install_arpwatch
-set_grubpassword
-file_permissions
-;;
-
-
-5)
-check_root
-install_dep
-config_host
-config_timezone
-update_system
-restrictive_umask
-unused_filesystems
-uncommon_netprotocols
-admin_user
-rsa_keygen
-rsa_keycopy
-secure_ssh
-set_iptables
-install_fail2ban
-install_secure_mysql
-install_apache
-install_secure_php
-install_modsecurity
-set_owasp_rules
-secure_optimize_apache
-install_modevasive
-install_qos_spamhaus
-config_fail2ban
-additional_packages
-tune_secure_kernel
-install_rootkit_hunter
-tune_nano_vim_bashrc
-daily_update_cronjob
-install_artillery
-additional_hardening
-install_unhide
-install_tiger
-install_psad
-disable_compilers
-secure_tmp
-apache_conf_restrictions
-unattended_upgrades
-enable_proc_acct
-install_auditd
-install_sysstat
-install_arpwatch
-set_grubpassword
-file_permissions
-;;
-
-6)
 
 menu=""
 until [ "$menu" = "34" ]; do
@@ -1640,16 +1415,11 @@ esac
 done
 ;;
 
-7)
+2)
 chmod +x jshielder-CIS.sh
 ./jshielder-CIS.sh
 ;;
 
 
-8)
-exit 0
-;;
-
 esac
 ##############################################################################################################
-
